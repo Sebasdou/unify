@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/loginFragment">
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.ucc.unify.ui.view.login.LoginFragment"
+        android:label="Inicio de sesion"
+        tools:layout="@layout/fragment_login" >
+
+    </fragment>
+    <fragment
+        android:id="@+id/chatsFragment"
+        android:name="com.ucc.unify.ui.view.chats.ChatsFragment"
+        android:label="Conversaciones"
+        tools:layout="@layout/fragment_chats" />
+    <fragment
+        android:id="@+id/groupsFragment"
+        android:name="com.ucc.unify.ui.view.groups.GroupsFragment"
+        android:label="Comunidad"
+        tools:layout="@layout/fragment_groups" />
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.ucc.unify.ui.view.home.HomeFragment"
+        android:label="Inicio"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/profileUserFragment"
+        android:name="com.ucc.unify.ui.view.profile.ProfileUserFragment"
+        android:label="Perfil"
+        tools:layout="@layout/fragment_profile_user" />
+</navigation>

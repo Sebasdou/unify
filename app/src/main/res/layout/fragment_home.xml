@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="4dp"
+    android:orientation="vertical"
+    tools:context=".ui.view.home.HomeFragment">
+
+    <include
+        layout="@layout/item_news"
+        android:layout_width="match_parent"
+        android:layout_height="140dp" />
+    <include
+        android:layout_marginVertical="16dp"
+        layout="@layout/item_news_2"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"/>
+    <include
+        layout="@layout/item_news_3"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"/>
+</androidx.appcompat.widget.LinearLayoutCompat>
