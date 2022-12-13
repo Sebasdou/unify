@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="18dp"
+    tools:context=".ui.view.home.new_people.NewPeopleFragment">
+    <androidx.appcompat.widget.AppCompatImageView
+        android:scaleType="centerCrop"
+        android:src="@drawable/profile_photo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+    <TextView
+        android:id="@+id/tv_name"
+        android:text="Juan Francisco Hernandez"
+        android:textSize="18sp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:layout_marginHorizontal="12dp"
+        android:layout_above="@id/tv_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/tv_description"
+        android:text="Me gusta jugar ajedrez.
+Ing. Bioquimica 6to semestre.
+Adoro ir a connciertos"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:layout_margin="12dp"
+        android:layout_above="@id/btn_close"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/btn_close"
+        android:src="@drawable/close"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/circle_background"
+        android:scaleType="centerInside"
+        android:padding="22dp"
+        android:layout_margin="8dp"
+        android:backgroundTint="#FA4040"
+        android:layout_width="70dp"
+        android:layout_height="70dp" />
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:src="@drawable/check"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:background="@drawable/circle_background"
+        android:scaleType="centerInside"
+        android:padding="22dp"
+        android:layout_margin="8dp"
+        android:backgroundTint="#4CF671"
+        android:layout_width="70dp"
+        android:layout_height="70dp" />
+</RelativeLayout>

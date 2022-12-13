@@ -41,6 +41,11 @@ class MainActivity : AppCompatActivity() {
                     binding.bottomNavigationView.visibility = View.GONE
                     binding.topAppBar.visibility = View.GONE
                 }
+                R.id.blogsFragment -> {
+                    binding.topAppBar.navigationIcon =
+                        resources.getDrawable(R.drawable.ic_baseline_arrow_back_ios_24, theme)
+                    binding.topAppBar.setNavigationOnClickListener { navController.popBackStack() }
+                }
                 else -> {
                     binding.bottomNavigationView.visibility = View.VISIBLE
                     binding.topAppBar.visibility = View.VISIBLE

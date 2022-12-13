@@ -12,7 +12,7 @@ class BlogsFragment : Fragment() {
     private var _binding: FragmentBlogsBinding? = null
     private val binding get() = _binding!!
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-
+        _binding = FragmentBlogsBinding.inflate(inflater, container, false)
         return binding.root
     }
 }

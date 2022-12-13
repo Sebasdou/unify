@@ -25,10 +25,21 @@
         android:id="@+id/homeFragment"
         android:name="com.ucc.unify.ui.view.home.HomeFragment"
         android:label="Inicio"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+    </fragment>
     <fragment
         android:id="@+id/profileUserFragment"
         android:name="com.ucc.unify.ui.view.profile.ProfileUserFragment"
         android:label="Perfil"
         tools:layout="@layout/fragment_profile_user" />
+    <fragment
+        android:id="@+id/blogsFragment"
+        android:name="com.ucc.unify.ui.view.home.blogs.BlogsFragment"
+        android:label="Blog"
+        tools:layout="@layout/fragment_blogs" />
+    <fragment
+        android:id="@+id/newPeopleFragment"
+        android:name="com.ucc.unify.ui.view.home.new_people.NewPeopleFragment"
+        android:label="Personas"
+        tools:layout="@layout/fragment_new_people" />
 </navigation>
