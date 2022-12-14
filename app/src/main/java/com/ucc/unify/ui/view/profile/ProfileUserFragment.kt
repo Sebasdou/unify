@@ -18,11 +18,16 @@ import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.userProfileChangeRequest
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.FirebaseFirestoreException
 import com.google.firebase.storage.FirebaseStorage
+import com.squareup.picasso.Picasso
 import com.ucc.unify.R
+import com.ucc.unify.data.model.Filter
 import com.ucc.unify.databinding.FragmentProfileUserBinding
 
 class ProfileUserFragment : Fragment() {
+    private val db = FirebaseFirestore.getInstance()
     private val firebaseAuth = FirebaseAuth.getInstance()
     val user = firebaseAuth.currentUser
     private val userId = user!!.uid
@@ -41,32 +46,53 @@ class ProfileUserFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val sessionPrefs = binding.root.context.getSharedPreferences(
-            getString(R.string.prefs_file), Context.MODE_PRIVATE
-        )
         val options = arrayOf("Datos generales", "Privacidad", "Personalización",
             "Preferencias de institución", "Preferencias de comunidad",
             "Ayuda", "Comentarios", "Cerrar Sesión"
         )
         binding.listOptions.adapter = ArrayAdapter(binding.root.context,
             R.layout.item_list, R.id.text_view, options)
+
         binding.listOptions.setOnItemClickListener { _, _, i, _ ->
             when(i){
                 0 -> {
                     findNavController().navigate(R.id.generalDataFragment)
                 }
                 7 -> {
+                    val sessionPrefs = binding.root.context.getSharedPreferences(
+                        getString(R.string.prefs_file), Context.MODE_PRIVATE
+                    ).edit()
+                    sessionPrefs.clear()
+                    sessionPrefs.apply()
 
+                    firebaseAuth.signOut()
+                    findNavController().navigate(R.id.loginFragment)
                 }
             }
         }
 
         if (user != null) {
-            setup(user, userId)
+            setup(userId)
         }
     }
 
-    private fun setup(user: FirebaseUser, userId: String) {
+    private fun setup(userId: String) {
+        try {
+            db.collection("users").document(userId).get()
+                .addOnSuccessListener { doc ->
+                    Log.e("LOL", doc.data.toString())
+                    val profilePic = doc.get("profilePic") as String?
+                        ?: return@addOnSuccessListener
+
+                    val storageReference = storage.reference.child(profilePic)
+
+                    Picasso.get().load(storageReference.downloadUrl.toString()).into(binding.ProfilePictureView)
+                }
+        } catch(e: FirebaseFirestoreException) {
+            showAlert("Ha ocurrido un error al obtener su filtro de personas.")
+            Log.e("LOL", e.code.toString())
+        }
+
         binding.ChoosePicButton.setOnClickListener {
             val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
             startActivityForResult(gallery, pickImage)
@@ -76,11 +102,11 @@ class ProfileUserFragment : Fragment() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (resultCode == Activity.RESULT_OK && requestCode == pickImage) {
             imageUri = data?.data
-            Log.e("LOL", imageUri.toString())
             binding.ProfilePictureView.setImageURI(imageUri)
 
             val storageRef = storage.reference
-            val userPicsRef = storageRef.child("$userId/profilePicture/profilePicture.jpg")
+            val profilePicPath = "$userId/profilePicture/profilePicture.jpg"
+            val userPicsRef = storageRef.child(profilePicPath)
 
             val uploadTask = userPicsRef.putFile(imageUri!!)
 
@@ -92,6 +118,10 @@ class ProfileUserFragment : Fragment() {
                 val profileUpdates = userProfileChangeRequest {
                     photoUri = Uri.parse(downloadUri.toString())
                 }
+
+                db.collection("users").document(userId).update(
+                    "profilePic", profilePicPath
+                )
 
                 user?.updateProfile(profileUpdates)
             }

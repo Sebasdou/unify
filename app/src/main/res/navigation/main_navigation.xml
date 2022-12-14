@@ -98,6 +98,6 @@
     <fragment
         android:id="@+id/filterPeopleFragment"
         android:name="com.ucc.unify.ui.view.home.newpeople.FilterPeopleFragment"
-        android:label="fragment_filter_people"
+        android:label="Filtro"
         tools:layout="@layout/fragment_filter_people" />
 </navigation>

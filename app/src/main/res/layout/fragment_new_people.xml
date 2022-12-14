@@ -13,7 +13,7 @@
         android:scaleType="centerCrop"
         android:src="@drawable/profile_photo" />
     <ImageButton
-        android:id="@+id/btn_filter"
+        android:id="@+id/FilterButton"
         android:layout_width="wrap_content"
         android:padding="22dp"
         android:layout_margin="8dp"
@@ -40,11 +40,11 @@ Adoro ir a connciertos"
         android:textSize="16sp"
         android:textColor="@color/white"
         android:layout_margin="12dp"
-        android:layout_above="@id/btn_close"
+        android:layout_above="@id/DislikeButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
     <androidx.appcompat.widget.AppCompatImageButton
-        android:id="@+id/btn_close"
+        android:id="@+id/DislikeButton"
         android:src="@drawable/close"
         android:layout_alignParentBottom="true"
         android:background="@drawable/circle_background"
@@ -55,6 +55,7 @@ Adoro ir a connciertos"
         android:layout_width="70dp"
         android:layout_height="70dp" />
     <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/LikeButton"
         android:src="@drawable/check"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"

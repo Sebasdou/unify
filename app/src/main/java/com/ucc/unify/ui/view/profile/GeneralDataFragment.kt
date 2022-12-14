@@ -43,7 +43,8 @@ class GeneralDataFragment : Fragment() {
             try {
                 db.collection("users").document(userId).get()
                     .addOnSuccessListener { doc ->
-                        if (!doc.getBoolean("emailVerificationSent")!!) {
+                        val isEmailSent : Boolean? = doc.getBoolean("emailVerificationSent")
+                        if(isEmailSent == false || isEmailSent == null) {
                             user.sendEmailVerification().addOnCompleteListener { secondTask ->
                                 if (secondTask.isSuccessful) {
                                     Log.d(TAG, "Email de confirmación enviado a $userEmail.")
@@ -133,11 +134,8 @@ class GeneralDataFragment : Fragment() {
             val selectedSex = binding.generalData.SpinnerSex.selectedItem.toString()
 
             val oppositeSex = if(selectedSex == "Mujer") "Hombre" else "Mujer"
-            val interests = arrayListOf(
-                "Libros", "Futbol", "Cine", "Musica", "Baile", "Ejercicio"
-            )
 
-            val filter = Filter(17, 30, oppositeSex, interests, selectedMajor)
+            val filter = Filter(17, 30, oppositeSex, selectedMajor)
 
             try {
                 val profileUpdates = userProfileChangeRequest {

@@ -137,11 +137,8 @@ class SignInFragment : Fragment() {
             val selectedSex = binding.generalData.SpinnerSex.selectedItem.toString()
 
             val oppositeSex = if(selectedSex == "Mujer") "Hombre" else "Mujer"
-            val interests = arrayListOf(
-                "Libros", "Futbol", "Cine", "Musica", "Baile", "Ejercicio"
-            )
 
-            val filter = Filter(17, 30, oppositeSex, interests, selectedMajor)
+            val filter = Filter(17, 26, oppositeSex, selectedMajor)
 
             try {
                 val profileUpdates = userProfileChangeRequest {

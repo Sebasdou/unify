@@ -36,53 +36,11 @@ class FilterPeopleFragment : Fragment() {
         val userId = user?.uid
 
         if(userId != null) {
-            val userEmail = user.email
-
-            try {
-                db.collection("users").document(userId).get()
-                    .addOnSuccessListener { doc ->
-                        if (!doc.getBoolean("emailVerificationSent")!!) {
-                            user.sendEmailVerification().addOnCompleteListener { secondTask ->
-                                if (secondTask.isSuccessful) {
-                                    Log.d(TAG, "Email de confirmación enviado a $userEmail.")
-                                    try {
-                                        db.collection("users").document(userId).update(
-                                            "emailVerificationSent", true
-                                        )
-                                    } catch (e: FirebaseFirestoreException) {
-                                        Log.e(TAG, e.code.toString())
-                                    }
-                                } else {
-                                    Log.d(
-                                        TAG,
-                                        "Error al enviar email de confirmación a $userEmail."
-                                    )
-                                }
-                            }
-                        }
-                    }
-            } catch (e: FirebaseFirestoreException) {
-                Log.e(TAG, e.code.toString())
-            }
-
             setup(userId)
         }
     }
 
     private fun setup(userId: String) {
-        val checkboxes = listOf(
-            binding.LibrosCheck, binding.FutbolCheck,
-            binding.CineCheck, binding.MusicaCheck,
-            binding.BaileCheck, binding.EjercicioCheck
-        )
-
-        /*val librosCheck : CheckBox = binding.LibrosCheck
-        val futbolCheck : CheckBox = binding
-        val cineCheck : CheckBox = binding
-        val musicaCheck : CheckBox = binding
-        val baileCheck : CheckBox = binding
-        val ejercicioCheck : CheckBox = binding*/
-
         val adapterMajors = ArrayAdapter<String>(
             binding.root.context, android.R.layout.simple_spinner_item
         )
@@ -98,7 +56,7 @@ class FilterPeopleFragment : Fragment() {
 
         val ageList = ArrayList<Int>()
 
-        for(i in 1..100) {
+        for(i in 17..50) {
             ageList.add(i)
         }
 
@@ -116,22 +74,19 @@ class FilterPeopleFragment : Fragment() {
         binding.SpinnerSex.adapter = adapterSexes
 
         binding.SaveButton.setOnClickListener {
-            val checkedInterests = ArrayList<String>()
-
-            for(checkbox in checkboxes) {
-                if(checkbox.isChecked) {
-                    checkedInterests.add(checkbox.text.toString())
-                }
-            }
-
             val selectedMajor = binding.SpinnerMajor.selectedItem.toString()
             val selectedAgeFrom = binding.SpinnerAgeFrom.selectedItem.toString().toLong()
             val selectedAgeTo = binding.SpinnerAgeTo.selectedItem.toString().toLong()
             val selectedSex = binding.SpinnerSex.selectedItem.toString()
 
+            if(selectedAgeTo - selectedAgeFrom > 9) {
+                showAlert("Elija un rango de edades más pequeño.")
+                return@setOnClickListener
+            }
+
             try {
                 val filter = Filter(
-                    selectedAgeFrom, selectedAgeTo, selectedSex, checkedInterests, selectedMajor
+                    selectedAgeFrom, selectedAgeTo, selectedSex, selectedMajor
                 )
 
                 db.collection("users").document(userId).update(

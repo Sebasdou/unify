@@ -20,5 +20,14 @@ class ChatsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val chats = arrayOf("María Rivero", "Juan Escutia", "Francisco Madero", "Rodolfo Márquez")
+
+        binding.listChats.adapter = ArrayAdapter(binding.root.context,
+            R.layout.item_chat, R.id.text_view, chats)
+        binding.listChats.setOnItemClickListener { _, _, i, _ ->
+            when(i) {
+                0 -> { findNavController().navigate(R.id.messagesFragment) }
+            }
+        }
     }
 }
