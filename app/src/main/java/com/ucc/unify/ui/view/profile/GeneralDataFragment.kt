@@ -10,6 +10,8 @@ import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.ktx.userProfileChangeRequest
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.FirebaseFirestoreException
 import com.ucc.unify.data.model.Filter
@@ -65,12 +67,12 @@ class GeneralDataFragment : Fragment() {
                 Log.e(TAG, e.code.toString())
             }
 
-            setup(userId)
+            setup(user, userId)
         }
     }
 
-    private fun setup(userId: String) {
-        val name = binding.generalData.EditTextName.text.toString()
+    private fun setup(user: FirebaseUser, userId: String) {
+        val editTextName = binding.generalData.EditTextName
 
         val checkboxes = listOf(
             binding.generalData.LibrosCheck, binding.generalData.FutbolCheck,
@@ -117,6 +119,7 @@ class GeneralDataFragment : Fragment() {
         binding.generalData.SpinnerSex.adapter = adapterSexes
 
         binding.SaveButton.setOnClickListener {
+            val name = editTextName.text.toString()
             val checkedInterests = ArrayList<String>()
 
             for(checkbox in checkboxes) {
@@ -137,6 +140,12 @@ class GeneralDataFragment : Fragment() {
             val filter = Filter(17, 30, oppositeSex, interests, selectedMajor)
 
             try {
+                val profileUpdates = userProfileChangeRequest {
+                    displayName = name
+                }
+
+                user.updateProfile(profileUpdates)
+
                 db.collection("users").document(userId).update(
                     "name", name,
                     "interests", checkedInterests,
