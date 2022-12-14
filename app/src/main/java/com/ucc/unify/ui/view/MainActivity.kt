@@ -40,9 +40,15 @@ class MainActivity : AppCompatActivity() {
                     binding.bottomNavigationView.visibility = View.GONE
                     binding.topAppBar.visibility = View.GONE
                 }
-                R.id.blogsFragment -> { isBack(true) }
-                R.id.generalDataFragment -> { isBack(true) }
-                R.id.chatFragment -> { isBack(true) }
+                R.id.blogsFragment -> {
+                    isBack(true)
+                }
+                R.id.generalDataFragment -> {
+                    isBack(true)
+                }
+                R.id.chatFragment -> {
+                    isBack(true)
+                }
 
                 else -> {
                     binding.bottomNavigationView.visibility = View.VISIBLE
