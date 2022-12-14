@@ -40,6 +40,12 @@ class MainActivity : AppCompatActivity() {
                     binding.bottomNavigationView.visibility = View.GONE
                     binding.topAppBar.visibility = View.GONE
                 }
+                R.id.signInFragment -> {
+                    binding.bottomNavigationView.visibility = View.GONE
+                }
+                R.id.filterChatsFragment -> {
+                    isBack(true)
+                }
                 R.id.blogsFragment -> {
                     isBack(true)
                 }

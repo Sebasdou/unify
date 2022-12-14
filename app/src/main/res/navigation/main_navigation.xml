@@ -9,7 +9,6 @@
         android:name="com.ucc.unify.ui.view.login.LoginFragment"
         android:label="Inicio de sesion"
         tools:layout="@layout/fragment_login" >
-
     </fragment>
     <fragment
         android:id="@+id/chatsFragment"
@@ -57,4 +56,9 @@
         android:name="com.ucc.unify.ui.view.chats.ChatFragment"
         android:label="María Rivero"
         tools:layout="@layout/fragment_chat" />
+    <fragment
+        android:id="@+id/filterChatsFragment"
+        android:name="com.ucc.unify.ui.view.chats.FilterChatsFragment"
+        android:label="fragment_filter_chats"
+        tools:layout="@layout/fragment_filter_chats" />
 </navigation>

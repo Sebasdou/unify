@@ -26,11 +26,7 @@ class ChatsFragment : Fragment() {
         binding.listChats.adapter = ArrayAdapter(binding.root.context,
             R.layout.item_chat, R.id.text_view, chats)
         binding.searchView.btnFilter.setOnClickListener {
-            val dialog = FilterDialogFrament.newInstance(
-                arrayOf("Nombre", "Apellidos"),
-                "Filtrar por: "
-            )
-            dialog.show(childFragmentManager, "dialog")
+            findNavController().navigate(R.id.filterChatsFragment)
         }
         binding.listChats.setOnItemClickListener { _, _, i, _ ->
             when(i) {

@@ -1,18 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     tools:context=".ui.view.home.blogs.BlogsFragment">
-    <androidx.appcompat.widget.LinearLayoutCompat
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_publications"
+        tools:listitem="@layout/item_blog"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <include
-            layout="@layout/item_blog_1"/>
-        <include
-            layout="@layout/item_blog_2"/>
-        <include
-            layout="@layout/item_blog_3"/>
-    </androidx.appcompat.widget.LinearLayoutCompat>
-</ScrollView>
+        android:layout_height="match_parent" />
+</androidx.appcompat.widget.LinearLayoutCompat>

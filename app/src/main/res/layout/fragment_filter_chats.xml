@@ -1,0 +1,79 @@
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context=".ui.view.chats.FilterChatsFragment">
+    <TextView
+        android:text="Género"
+        android:textSize="24sp"
+        android:textColor="@color/black"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/sp_gender"
+        android:layout_margin="12dp"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:text="Edad"
+        android:textSize="24sp"
+        android:textColor="@color/black"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="Desde:"
+            android:textSize="18sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/sp_age_from"
+            android:layout_margin="12dp"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="Hasta:"
+            android:textSize="18sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/sp_age_to"
+            android:layout_margin="12dp"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <TextView
+        android:text="Carrera:"
+        android:textSize="24sp"
+        android:textColor="@color/black"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/sp_major"
+        android:layout_margin="12dp"
+        android:layout_width="240dp"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:text="Intereses"
+        android:textSize="24sp"
+        android:textColor="@color/black"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/sp_interests"
+        android:layout_margin="12dp"
+        android:layout_width="240dp"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/btn_filter"
+        android:layout_gravity="center_horizontal"
+        android:text="Guardar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</androidx.appcompat.widget.LinearLayoutCompat>
