@@ -1,4 +1,4 @@
-package com.ucc.unify.ui.view.profile
+package com.ucc.unify.ui.view.home.newpeople
 
 import android.os.Bundle
 import android.util.Log
@@ -13,19 +13,19 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.FirebaseFirestoreException
 import com.ucc.unify.data.model.Filter
-import com.ucc.unify.databinding.FragmentGeneralDataBinding
+import com.ucc.unify.databinding.FragmentFilterPeopleBinding
 
-class GeneralDataFragment : Fragment() {
-    private val TAG = "GeneralDataFragment"
+class FilterPeopleFragment : Fragment() {
+    private val TAG = "FilterPeopleFragment"
     private val db = FirebaseFirestore.getInstance()
     private val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
-    private var _binding: FragmentGeneralDataBinding? = null
+    private var _binding: FragmentFilterPeopleBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentGeneralDataBinding.inflate(inflater, container, false)
+        _binding = FragmentFilterPeopleBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -35,7 +35,7 @@ class GeneralDataFragment : Fragment() {
         val user = firebaseAuth.currentUser
         val userId = user?.uid
 
-        if (userId != null) {
+        if(userId != null) {
             val userEmail = user.email
 
             try {
@@ -70,12 +70,10 @@ class GeneralDataFragment : Fragment() {
     }
 
     private fun setup(userId: String) {
-        val name = binding.generalData.EditTextName.text.toString()
-
         val checkboxes = listOf(
-            binding.generalData.LibrosCheck, binding.generalData.FutbolCheck,
-            binding.generalData.CineCheck, binding.generalData.MusicaCheck,
-            binding.generalData.BaileCheck, binding.generalData.EjercicioCheck
+            binding.LibrosCheck, binding.FutbolCheck,
+            binding.CineCheck, binding.MusicaCheck,
+            binding.BaileCheck, binding.EjercicioCheck
         )
 
         /*val librosCheck : CheckBox = binding.LibrosCheck
@@ -112,9 +110,10 @@ class GeneralDataFragment : Fragment() {
 
         adapterSexes.addAll(listOf("Mujer", "Hombre"))
 
-        binding.generalData.SpinnerMajor.adapter = adapterMajors
-        binding.generalData.SpinnerAge.adapter = adapterAges
-        binding.generalData.SpinnerSex.adapter = adapterSexes
+        binding.SpinnerMajor.adapter = adapterMajors
+        binding.SpinnerAgeFrom.adapter = adapterAges
+        binding.SpinnerAgeTo.adapter = adapterAges
+        binding.SpinnerSex.adapter = adapterSexes
 
         binding.SaveButton.setOnClickListener {
             val checkedInterests = ArrayList<String>()
@@ -125,25 +124,17 @@ class GeneralDataFragment : Fragment() {
                 }
             }
 
-            val selectedMajor = binding.generalData.SpinnerMajor.selectedItem.toString()
-            val selectedAge = binding.generalData.SpinnerAge.selectedItem.toString().toInt()
-            val selectedSex = binding.generalData.SpinnerSex.selectedItem.toString()
-
-            val oppositeSex = if(selectedSex == "Mujer") "Hombre" else "Mujer"
-            val interests = arrayListOf(
-                "Libros", "Futbol", "Cine", "Musica", "Baile", "Ejercicio"
-            )
-
-            val filter = Filter(17, 30, oppositeSex, interests, selectedMajor)
+            val selectedMajor = binding.SpinnerMajor.selectedItem.toString()
+            val selectedAgeFrom = binding.SpinnerAgeFrom.selectedItem.toString().toLong()
+            val selectedAgeTo = binding.SpinnerAgeTo.selectedItem.toString().toLong()
+            val selectedSex = binding.SpinnerSex.selectedItem.toString()
 
             try {
+                val filter = Filter(
+                    selectedAgeFrom, selectedAgeTo, selectedSex, checkedInterests, selectedMajor
+                )
+
                 db.collection("users").document(userId).update(
-                    "name", name,
-                    "interests", checkedInterests,
-                    "major", selectedMajor,
-                    "age", selectedAge,
-                    "sex", selectedSex,
-                    "hasProfileData", true,
                     "filter", filter
                 )
             } catch(e: FirebaseFirestoreException) {

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "213006424235",
+    "project_id": "unify-b3d65",
+    "storage_bucket": "unify-b3d65.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:213006424235:android:e8369d3d5e1a3aa6d57fee",
+        "android_client_info": {
+          "package_name": "com.ucc.unify"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "213006424235-8k492s01du55fgvfk3ikkrigqlurp211.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA5nTFivCnzrPGHb51KMlHep5OvSJd7Fg0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "213006424235-8k492s01du55fgvfk3ikkrigqlurp211.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

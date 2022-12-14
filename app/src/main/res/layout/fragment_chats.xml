@@ -3,13 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".ui.view.chats.ChatsFragment">
-    <include
-        android:id="@+id/search_view"
-        layout="@layout/searchview_custom" />
-    <ListView
-        android:id="@+id/list_chats"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_publications"
+        tools:listitem="@layout/item_chat"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
 </androidx.appcompat.widget.LinearLayoutCompat>

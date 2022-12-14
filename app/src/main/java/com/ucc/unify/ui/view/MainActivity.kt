@@ -1,13 +1,13 @@
 package com.ucc.unify.ui.view
 
+import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
 import com.ucc.unify.R
 import com.ucc.unify.databinding.ActivityMainBinding
@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.signInFragment -> {
                     binding.bottomNavigationView.visibility = View.GONE
                 }
-                R.id.filterChatsFragment -> {
+                R.id.filterPeopleFragment -> {
                     isBack(true)
                 }
                 R.id.blogsFragment -> {
@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.generalDataFragment -> {
                     isBack(true)
                 }
-                R.id.chatFragment -> {
+                R.id.messagesFragment -> {
                     isBack(true)
                 }
 

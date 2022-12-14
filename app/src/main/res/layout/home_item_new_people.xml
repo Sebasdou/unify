@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/item"
     android:layout_width="match_parent"
+    android:id="@+id/item"
     android:backgroundTint="@color/primary"
     android:layout_height="150dp">
     <androidx.appcompat.widget.AppCompatImageView
@@ -16,7 +16,7 @@
         android:orientation="vertical">
         <TextView
             android:layout_margin="6dp"
-            android:text="Noticias"
+            android:text="Nuevas personas"
             android:textStyle="bold"
             android:textColor="@color/white"
             android:textSize="24sp"
@@ -24,7 +24,15 @@
             android:layout_height="wrap_content"/>
         <TextView
             android:layout_marginHorizontal="6dp"
-            android:text="Tu institución ha publicado tradas en su blog. Informate y mantente actualizado."
+            android:text="El campus está lleno de personas extraordinarias."
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_marginHorizontal="6dp"
+            android:layout_marginTop="10dp"
+            android:text="¡Conócelas!"
             android:textColor="@color/white"
             android:textSize="17sp"
             android:layout_width="match_parent"

@@ -11,7 +11,7 @@ import androidx.fragment.app.DialogFragment
 import com.ucc.unify.R
 import com.ucc.unify.databinding.DialogFragmentFilterBinding
 
-class FilterDialogFrament : DialogFragment() {
+class FilterDialogFragment : DialogFragment() {
     private lateinit var options: Array<String>
     private var title = ""
     private var _binding: DialogFragmentFilterBinding? = null
@@ -26,7 +26,7 @@ class FilterDialogFrament : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         _binding = DialogFragmentFilterBinding.inflate(LayoutInflater.from(context))
         binding.listFilter.adapter = ArrayAdapter(binding.root.context,
-            R.layout.item_filter, R.id.text_view, options)
+            R.layout.dialog_fragment_filter, R.id.text_view, options)
         return AlertDialog.Builder(requireContext())
             .setView(binding.root)
             .setTitle(title)
@@ -35,8 +35,8 @@ class FilterDialogFrament : DialogFragment() {
     companion object {
         private const val ITEMS = "items"
         private const val TITLE= "title"
-        fun newInstance(items: Array<String>, title: String ): FilterDialogFrament =
-            FilterDialogFrament().apply {
+        fun newInstance(items: Array<String>, title: String ): FilterDialogFragment =
+            FilterDialogFragment().apply {
                 arguments = Bundle().apply {
                     putStringArray(ITEMS, items)
                     putString(TITLE, title)

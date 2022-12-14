@@ -5,18 +5,18 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.ucc.unify.data.model.Comment
-import com.ucc.unify.data.model.Publication
+import com.ucc.unify.data.model.Reply
+import com.ucc.unify.data.model.Post
 import com.ucc.unify.databinding.ItemBlogBinding
 
 class PublicationsAdapter(
-    private val showComments: (List<Comment>) -> Unit,
-): ListAdapter<Publication, PublicationsAdapter.PublicationVH>(Companion) {
-    companion object : DiffUtil.ItemCallback<Publication>() {
-        override fun areItemsTheSame(oldItem: Publication, newItem: Publication): Boolean {
+    private val showComments: (List<Reply>) -> Unit,
+): ListAdapter<Post, PublicationsAdapter.PublicationVH>(Companion) {
+    companion object : DiffUtil.ItemCallback<Post>() {
+        override fun areItemsTheSame(oldItem: Post, newItem: Post): Boolean {
             return oldItem.id == newItem.id
         }
-        override fun areContentsTheSame(oldItem: Publication, newItem: Publication): Boolean {
+        override fun areContentsTheSame(oldItem: Post, newItem: Post): Boolean {
             return oldItem == newItem
         }
     }
@@ -29,12 +29,12 @@ class PublicationsAdapter(
     }
 
     inner class PublicationVH(private val binding: ItemBlogBinding): RecyclerView.ViewHolder(binding.root){
-        fun bind(publication: Publication){
+        fun bind(post: Post){
             with(binding){
-                tvPublication.text = publication.publication
-                tvDatetime.text = publication.date.toString()
-                tvNameUser.text = publication.user.name
-                btnComment.setOnClickListener { showComments(publication.comments) }
+                tvPublication.text = post.publication
+                tvDatetime.text = post.date.toString()
+                tvNameUser.text = post.user.name
+                btnComment.setOnClickListener { showComments(post.replies) }
             }
         }
     }

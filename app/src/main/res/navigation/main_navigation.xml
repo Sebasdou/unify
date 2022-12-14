@@ -8,13 +8,18 @@
         android:id="@+id/loginFragment"
         android:name="com.ucc.unify.ui.view.login.LoginFragment"
         android:label="Inicio de sesion"
-        tools:layout="@layout/fragment_login" >
-    </fragment>
+        tools:layout="@layout/fragment_login" />
     <fragment
         android:id="@+id/chatsFragment"
         android:name="com.ucc.unify.ui.view.chats.ChatsFragment"
         android:label="Conversaciones"
-        tools:layout="@layout/fragment_chats" />
+        tools:layout="@layout/fragment_chats" >
+        <argument
+            android:name="userId"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="null" />
+    </fragment>
     <fragment
         android:id="@+id/groupsFragment"
         android:name="com.ucc.unify.ui.view.groups.GroupsFragment"
@@ -25,12 +30,23 @@
         android:name="com.ucc.unify.ui.view.home.HomeFragment"
         android:label="Inicio"
         tools:layout="@layout/fragment_home" >
+        <argument
+            android:name="userId"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="null" />
     </fragment>
     <fragment
         android:id="@+id/profileUserFragment"
         android:name="com.ucc.unify.ui.view.profile.ProfileUserFragment"
         android:label="Perfil"
-        tools:layout="@layout/fragment_profile_user" />
+        tools:layout="@layout/fragment_profile_user" >
+        <argument
+            android:name="userId"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="null" />
+    </fragment>
     <fragment
         android:id="@+id/blogsFragment"
         android:name="com.ucc.unify.ui.view.home.blogs.BlogsFragment"
@@ -38,27 +54,50 @@
         tools:layout="@layout/fragment_blogs" />
     <fragment
         android:id="@+id/newPeopleFragment"
-        android:name="com.ucc.unify.ui.view.home.new_people.NewPeopleFragment"
+        android:name="com.ucc.unify.ui.view.home.newpeople.NewPeopleFragment"
         android:label="Personas"
-        tools:layout="@layout/fragment_new_people" />
+        tools:layout="@layout/fragment_new_people" >
+        <argument
+            android:name="userId"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="null" />
+    </fragment>
     <fragment
         android:id="@+id/generalDataFragment"
         android:name="com.ucc.unify.ui.view.profile.GeneralDataFragment"
         android:label="Datos generales"
-        tools:layout="@layout/fragment_general_data" />
+        tools:layout="@layout/fragment_general_data" >
+        <argument
+            android:name="userId"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="null" />
+    </fragment>
     <fragment
         android:id="@+id/signInFragment"
-        android:name="com.ucc.unify.ui.view.sign_in.SignInFragment"
+        android:name="com.ucc.unify.ui.view.signin.SignInFragment"
         android:label="Registro"
-        tools:layout="@layout/fragment_sign_in" />
+        tools:layout="@layout/fragment_sign_in" >
+        <argument
+            android:name="userId"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="null" />
+    </fragment>
     <fragment
-        android:id="@+id/chatFragment"
-        android:name="com.ucc.unify.ui.view.chats.ChatFragment"
-        android:label="María Rivero"
-        tools:layout="@layout/fragment_chat" />
+        android:id="@+id/messagesFragment"
+        android:name="com.ucc.unify.ui.view.chats.MessagesFragment"
+        tools:layout="@layout/fragment_messages">
+        <argument
+            android:name="userId"
+            android:defaultValue="null"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
     <fragment
-        android:id="@+id/filterChatsFragment"
-        android:name="com.ucc.unify.ui.view.chats.FilterChatsFragment"
-        android:label="fragment_filter_chats"
-        tools:layout="@layout/fragment_filter_chats" />
+        android:id="@+id/filterPeopleFragment"
+        android:name="com.ucc.unify.ui.view.home.newpeople.FilterPeopleFragment"
+        android:label="fragment_filter_people"
+        tools:layout="@layout/fragment_filter_people" />
 </navigation>

@@ -7,14 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
-import com.ucc.unify.databinding.FragmentChatBinding
+import com.ucc.unify.databinding.FragmentMessagesBinding
 
-class ChatFragment : Fragment() {
+class MessagesFragment : Fragment() {
 
-    private var _binding: FragmentChatBinding? = null
+    private var _binding: FragmentMessagesBinding? = null
     private val binding get() = _binding!!
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        _binding = FragmentChatBinding.inflate(inflater, container, false)
+        _binding = FragmentMessagesBinding.inflate(inflater, container, false)
         return binding.root
     }
 

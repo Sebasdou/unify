@@ -1,4 +1,4 @@
-package com.ucc.unify.ui.view.profile
+package com.ucc.unify.ui.view.signin
 
 import android.os.Bundle
 import android.util.Log
@@ -10,22 +10,26 @@ import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.ktx.userProfileChangeRequest
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.FirebaseFirestoreException
+import com.ucc.unify.R
 import com.ucc.unify.data.model.Filter
-import com.ucc.unify.databinding.FragmentGeneralDataBinding
+import com.ucc.unify.databinding.FragmentSignInBinding
 
-class GeneralDataFragment : Fragment() {
-    private val TAG = "GeneralDataFragment"
+class SignInFragment : Fragment() {
+
+    private val TAG = "SignInFragment"
     private val db = FirebaseFirestore.getInstance()
-    private val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
-    private var _binding: FragmentGeneralDataBinding? = null
+    private val firebaseAuth = FirebaseAuth.getInstance()
+    private var _binding: FragmentSignInBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentGeneralDataBinding.inflate(inflater, container, false)
+        _binding = FragmentSignInBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -41,7 +45,8 @@ class GeneralDataFragment : Fragment() {
             try {
                 db.collection("users").document(userId).get()
                     .addOnSuccessListener { doc ->
-                        if (!doc.getBoolean("emailVerificationSent")!!) {
+                        val isEmailSent : Boolean? = doc.getBoolean("emailVerificationSent")
+                        if(isEmailSent == false || isEmailSent == null) {
                             user.sendEmailVerification().addOnCompleteListener { secondTask ->
                                 if (secondTask.isSuccessful) {
                                     Log.d(TAG, "Email de confirmación enviado a $userEmail.")
@@ -65,12 +70,12 @@ class GeneralDataFragment : Fragment() {
                 Log.e(TAG, e.code.toString())
             }
 
-            setup(userId)
+            setup(user, userId)
         }
     }
 
-    private fun setup(userId: String) {
-        val name = binding.generalData.EditTextName.text.toString()
+    private fun setup(user: FirebaseUser,userId: String) {
+        val nameEditText = binding.generalData.EditTextName
 
         val checkboxes = listOf(
             binding.generalData.LibrosCheck, binding.generalData.FutbolCheck,
@@ -100,7 +105,7 @@ class GeneralDataFragment : Fragment() {
 
         val ageList = ArrayList<Int>()
 
-        for(i in 1..100) {
+        for(i in 17..80) {
             ageList.add(i)
         }
 
@@ -116,7 +121,9 @@ class GeneralDataFragment : Fragment() {
         binding.generalData.SpinnerAge.adapter = adapterAges
         binding.generalData.SpinnerSex.adapter = adapterSexes
 
-        binding.SaveButton.setOnClickListener {
+        binding.SignInButton.setOnClickListener {
+            val name = nameEditText.text.toString()
+
             val checkedInterests = ArrayList<String>()
 
             for(checkbox in checkboxes) {
@@ -137,22 +144,29 @@ class GeneralDataFragment : Fragment() {
             val filter = Filter(17, 30, oppositeSex, interests, selectedMajor)
 
             try {
-                db.collection("users").document(userId).update(
-                    "name", name,
-                    "interests", checkedInterests,
-                    "major", selectedMajor,
-                    "age", selectedAge,
-                    "sex", selectedSex,
-                    "hasProfileData", true,
-                    "filter", filter
+                val profileUpdates = userProfileChangeRequest {
+                    displayName = name
+                }
+
+                user.updateProfile(profileUpdates)
+
+                val newUserInfo = hashMapOf(
+                    "name" to name,
+                    "interests" to checkedInterests,
+                    "major" to selectedMajor,
+                    "age" to selectedAge,
+                    "sex" to selectedSex,
+                    "hasProfileData" to true,
+                    "filter" to filter
                 )
+
+                db.collection("users").document(userId).set(newUserInfo)
             } catch(e: FirebaseFirestoreException) {
                 showAlert("Ha ocurrido un error al actualizar sus datos.")
                 Log.e(TAG, e.code.toString())
             }
 
-            findNavController().popBackStack()
-
+            findNavController().navigate(R.id.homeFragment)
         }
     }
 
