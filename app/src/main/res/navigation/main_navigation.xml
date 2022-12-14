@@ -42,4 +42,19 @@
         android:name="com.ucc.unify.ui.view.home.new_people.NewPeopleFragment"
         android:label="Personas"
         tools:layout="@layout/fragment_new_people" />
+    <fragment
+        android:id="@+id/generalDataFragment"
+        android:name="com.ucc.unify.ui.view.profile.GeneralDataFragment"
+        android:label="Datos generales"
+        tools:layout="@layout/fragment_general_data" />
+    <fragment
+        android:id="@+id/signInFragment"
+        android:name="com.ucc.unify.ui.view.sign_in.SignInFragment"
+        android:label="fragment_sign_in"
+        tools:layout="@layout/fragment_sign_in" />
+    <fragment
+        android:id="@+id/chatFragment"
+        android:name="com.ucc.unify.ui.view.chats.ChatFragment"
+        android:label="María Rivero"
+        tools:layout="@layout/fragment_chat" />
 </navigation>

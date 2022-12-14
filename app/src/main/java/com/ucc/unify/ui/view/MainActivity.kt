@@ -28,7 +28,6 @@ class MainActivity : AppCompatActivity() {
         val navHostFragment = supportFragmentManager
             .findFragmentById(binding.navHostFragment.id) as NavHostFragment
         navController = navHostFragment.navController
-        val appBarConfiguration = AppBarConfiguration(navController.graph)
         binding.topAppBar.setupWithNavController(navController)
         binding.bottomNavigationView.setupWithNavController(navController)
         nav()
@@ -41,17 +40,26 @@ class MainActivity : AppCompatActivity() {
                     binding.bottomNavigationView.visibility = View.GONE
                     binding.topAppBar.visibility = View.GONE
                 }
-                R.id.blogsFragment -> {
-                    binding.topAppBar.navigationIcon =
-                        resources.getDrawable(R.drawable.ic_baseline_arrow_back_ios_24, theme)
-                    binding.topAppBar.setNavigationOnClickListener { navController.popBackStack() }
-                }
+                R.id.blogsFragment -> { isBack(true) }
+                R.id.generalDataFragment -> { isBack(true) }
+                R.id.chatFragment -> { isBack(true) }
+
                 else -> {
                     binding.bottomNavigationView.visibility = View.VISIBLE
-                    binding.topAppBar.visibility = View.VISIBLE
-                    binding.topAppBar.navigationIcon = null
+                    isBack(false)
                 }
             }
+        }
+    }
+
+    private fun isBack(band: Boolean) {
+        if(band){
+            binding.topAppBar.navigationIcon =
+                resources.getDrawable(R.drawable.ic_baseline_arrow_back_ios_24, theme)
+            binding.topAppBar.setNavigationOnClickListener { navController.popBackStack() }
+        } else {
+            binding.topAppBar.visibility = View.VISIBLE
+            binding.topAppBar.navigationIcon = null
         }
     }
 }

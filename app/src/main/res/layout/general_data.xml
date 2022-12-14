@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context=".ui.view.profile.GeneralDataFragment">
+    <TextView
+        android:text="Género"
+        android:textSize="24sp"
+        android:textColor="@color/black"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/sp_gender"
+        android:layout_margin="12dp"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:text="Edad"
+        android:textSize="24sp"
+        android:textColor="@color/black"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/sp_age"
+        android:layout_margin="12dp"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:text="Carrera:"
+        android:textSize="24sp"
+        android:textColor="@color/black"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/sp_major"
+        android:layout_margin="12dp"
+        android:layout_width="240dp"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:text="Intereses"
+        android:textSize="24sp"
+        android:textColor="@color/black"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/sp_interests"
+        android:layout_margin="12dp"
+        android:layout_width="240dp"
+        android:layout_height="wrap_content" />
+
+</androidx.appcompat.widget.LinearLayoutCompat>

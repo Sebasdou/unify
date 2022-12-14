@@ -5,7 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.AdapterView.OnItemSelectedListener
 import android.widget.ArrayAdapter
+import androidx.navigation.fragment.findNavController
 import com.ucc.unify.R
 import com.ucc.unify.databinding.FragmentProfileUserBinding
 
@@ -25,5 +28,11 @@ class ProfileUserFragment : Fragment() {
         )
         binding.listOptions.adapter = ArrayAdapter(binding.root.context,
             R.layout.item_list, R.id.text_view, options)
+        binding.listOptions.setOnItemClickListener { _, _, i, _ ->
+            when(i){
+                0 -> { findNavController().navigate(R.id.generalDataFragment) }
+            }
+        }
+
     }
 }

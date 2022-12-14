@@ -12,6 +12,7 @@ import com.ucc.unify.databinding.FragmentLoginBinding
 class LoginFragment : Fragment() {
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
         return binding.root
@@ -19,9 +20,9 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.button.setOnClickListener {
-            findNavController().navigate(R.id.homeFragment)
-        }
+
+        binding.button.setOnClickListener { findNavController().navigate(R.id.homeFragment) }
+        binding.btnSignIn.setOnClickListener { findNavController().navigate(R.id.signInFragment) }
     }
 
 }

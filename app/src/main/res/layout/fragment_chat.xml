@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".ui.view.chats.ChatFragment" >
+    <ScrollView
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:orientation="vertical"
+            android:padding="12dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:text="Ayer"
+                android:textSize="16sp"
+                android:elevation="1dp"
+                android:padding="6dp"
+                android:layout_margin="8dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/search_background"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:backgroundTint="#F1F4F4"
+                android:background="@drawable/search_background"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
+                android:padding="8dp"
+                android:orientation="vertical">
+                <TextView
+                    android:text="Hola, cómo te va?"
+                    android:textSize="20sp"
+                    android:layout_gravity="start"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:text="12:21 hrs"
+                    android:layout_gravity="end"
+                    android:textSize="14sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:backgroundTint="#F1F4F4"
+                android:background="@drawable/search_background"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
+                android:padding="8dp"
+                android:orientation="vertical">
+                <TextView
+                    android:text="Irás al gimanasio?"
+                    android:textSize="20sp"
+                    android:layout_gravity="start"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:text="12:21 hrs"
+                    android:layout_gravity="end"
+                    android:textSize="14sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_gravity="end"
+                android:backgroundTint="#F1F4F4"
+                android:background="@drawable/search_background"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
+                android:padding="8dp"
+                android:orientation="vertical">
+                <TextView
+                    android:text="Hola, qué tal"
+                    android:textSize="20sp"
+                    android:layout_gravity="start"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:text="13:30 hrs"
+                    android:layout_gravity="end"
+                    android:textSize="14sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_gravity="end"
+                android:backgroundTint="#F1F4F4"
+                android:background="@drawable/search_background"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
+                android:padding="8dp"
+                android:orientation="vertical">
+                <TextView
+                    android:text="Sí, iré. Nos vemos ahí?"
+                    android:textSize="20sp"
+                    android:layout_gravity="start"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:text="13:31 hrs"
+                    android:layout_gravity="end"
+                    android:textSize="14sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:backgroundTint="#F1F4F4"
+                android:background="@drawable/search_background"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
+                android:padding="8dp"
+                android:orientation="vertical">
+                <TextView
+                    android:text="Perfecto, nos vemos a las 5 pm"
+                    android:textSize="20sp"
+                    android:layout_gravity="start"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:text="13:44 hrs"
+                    android:layout_gravity="end"
+                    android:textSize="14sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_gravity="end"
+                android:backgroundTint="#F1F4F4"
+                android:background="@drawable/search_background"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
+                android:padding="8dp"
+                android:orientation="vertical">
+                <TextView
+                    android:text="Ok"
+                    android:textSize="20sp"
+                    android:layout_gravity="start"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:text="13:46 hrs"
+                    android:layout_gravity="end"
+                    android:textSize="14sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+            <TextView
+                android:text="Hoy"
+                android:textSize="16sp"
+                android:elevation="1dp"
+                android:padding="6dp"
+                android:layout_margin="8dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/search_background"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:backgroundTint="#F1F4F4"
+                android:background="@drawable/search_background"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
+                android:padding="8dp"
+                android:orientation="vertical">
+                <TextView
+                    android:text="Hey, amaneciste adolorido?"
+                    android:textSize="20sp"
+                    android:layout_gravity="start"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:text="08:13 hrs"
+                    android:layout_gravity="end"
+                    android:textSize="14sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:backgroundTint="#F1F4F4"
+                android:background="@drawable/search_background"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
+                android:layout_gravity="end"
+                android:padding="8dp"
+                android:orientation="vertical">
+                <TextView
+                    android:text="Sii!!"
+                    android:textSize="20sp"
+                    android:layout_gravity="start"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:text="08:22 hrs"
+                    android:layout_gravity="end"
+                    android:textSize="14sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:backgroundTint="#F1F4F4"
+                android:background="@drawable/search_background"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
+                android:layout_gravity="end"
+                android:padding="8dp"
+                android:orientation="vertical">
+                <TextView
+                    android:text="Demasiado jaja"
+                    android:textSize="20sp"
+                    android:layout_gravity="start"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:text="12:21 hrs"
+                    android:layout_gravity="end"
+                    android:textSize="14sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </ScrollView>
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <androidx.appcompat.widget.AppCompatEditText
+            android:hint="Escribe un mensaje a tu amigo..."
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+        <androidx.appcompat.widget.AppCompatImageView
+            android:src="@drawable/ic_baseline_send_24"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</androidx.appcompat.widget.LinearLayoutCompat>

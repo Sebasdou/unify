@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import androidx.navigation.fragment.findNavController
 import com.ucc.unify.R
 import com.ucc.unify.databinding.FragmentChatsBinding
 import com.ucc.unify.ui.common.FilterDialogFrament
@@ -31,7 +32,10 @@ class ChatsFragment : Fragment() {
             )
             dialog.show(childFragmentManager, "dialog")
         }
-        binding.searchView.btnSearch.setOnClickListener {
+        binding.listChats.setOnItemClickListener { _, _, i, _ ->
+            when(i) {
+                0 -> { findNavController().navigate(R.id.chatFragment) }
+            }
         }
     }
 }
